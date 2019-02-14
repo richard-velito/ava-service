@@ -1,0 +1,17 @@
+{
+  "name": "ava-service",
+  "description": "Alexa - Ariba - Service",
+  "repository": {},
+  "version": "0.0.1-SNAPSHOT",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~4.7.2",
+    "ejs": "*",
+    "morgan": "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+  }
+}
