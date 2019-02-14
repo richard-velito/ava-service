@@ -1,0 +1,7 @@
+---
+applications:
+- name: ava-service
+  memory: 192M
+  instances: 1
+  random-route: false
+  host: richard1350413
