@@ -1,7 +1,7 @@
 # ava-service
 Alexa - Ariba service
 
-To publish on SAP cloud executes 
+To publish on SAP cloud execute 
 - cf push
 
 
