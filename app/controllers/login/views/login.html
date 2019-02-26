@@ -4,7 +4,7 @@
 		<title>Alexa - Ariba Service</title>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- ui -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -16,19 +16,25 @@
 
 		<div class="container" >
 
-			<form class="form-signin" role="form">
-				<h2 class="form-signin-heading">Ariba - Alexa service authentication</h2>
-				<p>Username : </p>
-					<input class="form-control" type="text" placeholder="username" required>
-				<p>Password : </p>
-					<input class="form-control" ng-model="formLogin.pass" type="password" required>
+			<form class="form-signin" role="form" method="post" action="/auth">
+				<h2 class="form-signin-heading">Sign in</h2>
+				<p>Username</p>
+					<input class="form-control" name="username" type="text" placeholder="username" required>
+				<p>Password</p>
+					<input class="form-control" name="password" type="password" placeholder="password" required>
 				<p>&nbsp;</p>
-				<button class="btn btn-lg btn-primary btn-block" >SUBMIT</button>
+				
+				<input name="redirect_uri" type="hidden" value="<%= redirect_uri %>"/>
+				<input name="client_id" type="hidden" value="<%= client_id %>"/>
+				<input name="state" type="hidden" value="<%= state %>"/>
+				
+				<button class="btn btn-lg btn-primary btn-block">Sign in</button>
 			</form>
 
 		</div>
 
 		<!-- bootstrap -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	</body>
 </html>

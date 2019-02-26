@@ -7,10 +7,31 @@ app.set('views', __dirname + '/views/');
 
 // login FORM
 app.get( BASE_URL || BASE_URL + '/', function(req, res) {
-	res.render('login.html');
+
+	let redirect_uri 	= req.query.redirect_uri;
+	let client_id 		= req.query.client_id;
+	let state 			= req.query.state; 
+
+	res.render('login.html', { 
+			redirect_uri: redirect_uri,
+			client_id: client_id,
+			state: state
+		});
 });
 
 // AUTH action
 app.post( BASE_URL + '/auth', function(req, res) {
-	res.json('Uncaught Exception!');
+
+	let redirect_uri 	= req.query.redirect_uri;
+	let client_id 		= req.query.client_id;
+	let state 			= req.query.state; 
+	let username 		= req.query.username; 
+	let password 		= req.query.password; 
+	
+	res.redirect(redirect_uri + "?state=" + state + "&code=TOKEN12345");
+});
+
+// token
+app.get( BASE_URL + '/token', function(req, res) {
+	res.json('TOKEN12345');
 });

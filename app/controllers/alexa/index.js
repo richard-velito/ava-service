@@ -37,13 +37,13 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to Ariba Notifications service!';
 
+    const speechText = 'Welcome to Ariba Notifications service!';
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
       .withSimpleCard('Ariba - Alexa', speechText)
-      .getResponse();
+      .getResponse();    
   }
 };
 
@@ -53,12 +53,24 @@ const ReadMyNotificationsIntentIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'ReadMyNotificationsIntent';
   },
   handle(handlerInput) {
-    const speechText = 'You do not have notifications yet!!';
 
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Ariba - Alexa', speechText)
-      .getResponse();
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
+    
+    if (accessToken == undefined) {
+        
+      const speechText = "You must have a Ariba account to check notifications. Please use the Alexa app to link your Amazon account with your Ariba Account.";        
+      return handlerInput.responseBuilder
+          .speak(speechText)
+          .withLinkAccountCard()
+          .getResponse();
+    } else {
+
+      const speechText = 'You do not have notifications yet!!';
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .withSimpleCard('Ariba - Alexa', speechText)
+        .getResponse();
+    }
   }
 };
 
