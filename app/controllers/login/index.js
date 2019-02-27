@@ -26,12 +26,18 @@ app.post( BASE_URL + '/auth', function(req, res) {
 	let client_id 		= req.body.client_id;
 	let state 			= req.body.state; 
 	let username 		= req.body.username; 
-	let password 		= req.body.password; 
+	let password 		= req.body.password;
 	
-	res.redirect(redirect_uri + "?state=" + state + "&code=TOKEN12345");
+	res.redirect( decodeURIComponent(redirect_uri) + "?state=" + state + "&code=TOKEN12345" );
 });
 
 // token
-app.get( BASE_URL + '/token', function(req, res) {
-	res.json('TOKEN12345');
+app.post( BASE_URL + '/token', function(req, res) {
+
+	res.json({
+	    "access_token":"Atc|MQEWYJxEnP3I1ND03ZzbY_NxQkA7Kn7Aioev_OfMRcyVQ4NxGzJMEaKJ8f0lSOiV-yW270o6fnkI",
+	    "expires_in":3600,
+	    "scope":"",
+	    "token_type":"Bearer"
+	});
 });
